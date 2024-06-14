@@ -156,22 +156,26 @@ https://www.naver.com/favicon.ico?1
 
 ## Google Fonts
 
-페이지에서 사용할 '나눔고딕' 폰트를 지정합니다.
+'pretendard' 폰트의 가변 다이나믹 서브셋를 사용합니다.
 
-> 폰트 라이선스를 꼭 확인해야 합니다!
-
-[Google Fonts](https://fonts.google.com/)에서 고른 폰트 파일을 가져옵니다.
+https://github.com/orioncactus/pretendard
 
 ```html
-<link rel="preconnect" href="https://fonts.gstatic.com" />
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+<link
+    rel="stylesheet"
+    as="style"
+    crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+/>
 ```
 
-페이지에 폰트를 적용(CSS 상속)합니다.
+```css
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+```
 
 ```css
 body {
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Pretendard Variable', sans-serif;
 }
 ```
 
@@ -217,41 +221,6 @@ body {
 <i class="fa-solid fa-house"></i>
 ```
 
-## GSAP & ScrollToPlugin
-
-[GSAP(The GreenSock Animation Platform)](https://greensock.com/gsap/)은 자바스크립트로 제어하는 타임라인 기반의 애니메이션 라이브러리입니다.
-[ScrollToPlugin](https://greensock.com/scrolltoplugin/)은 스크롤 애니메이션을 지원하는 GSAP 플러그인입니다.
-
-> 자바스크립트 지식이 뛰어나지 않아도 충분히 사용할 수 있습니다!
-
-```html
-<script
-    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"
-    integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ=="
-    crossorigin="anonymous"
-></script>
-<script
-    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollToPlugin.min.js"
-    integrity="sha512-nTHzMQK7lwWt8nL4KF6DhwLHluv6dVq/hNnj2PBN0xMl2KaMm1PM02csx57mmToPAodHmPsipoERRNn4pG7f+Q=="
-    crossorigin="anonymous"
-></script>
-```
-
-[.to() 사용법](<https://greensock.com/docs/v3/GSAP/gsap.to()>)
-[GSAP Easing](https://greensock.com/docs/v2/Easing)
-
-```js
-gsap.to(요소, 시간, 옵션);
-// 또는
-TweenMax.to(요소, 시간, 옵션);
-```
-
-```js
-gsap.to(window, 0.7, {
-    scrollTo: 0,
-});
-```
-
 ## Swiper
 
 [Swiper](https://swiperjs.com/)는 하드웨어 가속 전환과 여러 기본 동작을 갖춘 현대적인 슬라이드 라이브러리입니다.
@@ -285,6 +254,121 @@ new Swiper('.swiper-container', {
     autoplay: true, // 자동 재생 여부
     loop: true, // 반복 재생 여부
 });
+```
+
+## GSAP & ScrollToPlugin
+
+https://odada.me/333
+
+[GSAP(The GreenSock Animation Platform)](https://greensock.com/gsap/)은 자바스크립트로 제어하는 타임라인 기반의 애니메이션 라이브러리입니다.
+[ScrollToPlugin](https://greensock.com/scrolltoplugin/)은 스크롤 애니메이션을 지원하는 GSAP 플러그인입니다.
+
+> 자바스크립트 지식이 뛰어나지 않아도 충분히 사용할 수 있습니다!
+
+```html
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"
+    integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ=="
+    crossorigin="anonymous"
+></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollToPlugin.min.js"
+    integrity="sha512-nTHzMQK7lwWt8nL4KF6DhwLHluv6dVq/hNnj2PBN0xMl2KaMm1PM02csx57mmToPAodHmPsipoERRNn4pG7f+Q=="
+    crossorigin="anonymous"
+></script>
+```
+
+[.to() 사용법](<https://greensock.com/docs/v3/GSAP/gsap.to()>)
+[GSAP Easing](https://greensock.com/docs/v2/Easing)
+
+```js
+gsap.to(요소, {
+    속성: 값,
+    속성: 값,
+    duration: 시간,
+    ease: 'easing', // 애니메이션 속도 조절
+    onComplete: function () {
+        // 애니메이션이 완료된 후 실행할 콜백 함수
+    },
+});
+```
+
+```js
+gsap.to(요소, {
+    속성: 값,
+    속성: 값,
+    duration: 시간,
+    scrollTrigger: {
+        trigger: 요소, // 기준이 되는 요소
+        start: 'top center', // 시작 지점 (화면의 어느 지점에서 시작할지)
+        end: 'bottom center', // 끝 지점 (화면의 어느 지점에서 끝낼지)
+        toggleActions: 'play none none none', // 액션(재생, 일시정지, 재생, 일시정지)
+        scrub: true, // 스크롤에 따라 애니메이션 속도 조절
+        markers: true, // 디버깅을 위한 마커 표시
+    },
+});
+```
+
+```js
+gsap.to(window, 0.7, {
+    scrollTo: 0,
+});
+```
+
+## AOS
+
+https://odada.me/332
+
+[AOS(Animate On Scroll)](https://michalsnik.github.io/aos/)은 스크롤에 따라 요소를 애니메이션하는 라이브러리입니다.
+
+```html
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+    integrity="sha384-+3
+    crossorigin="anonymous"
+/>
+<script
+    src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"
+    integrity="sha384-+3
+    crossorigin="anonymous"
+></script>
+```
+
+```js
+AOS.init({
+    offset: 200, // 시작 지점
+    duration: 600, // 애니메이션 지속 시간
+    easing: 'ease-in-out', // 애니메이션 속도 조절
+    delay: 100, // 애니메이션 지연 시간
+    once: true, // 한 번만 실행 여부
+    anchorPlacement: 'top-bottom', // 앵커(요소) 위치
+});
+```
+
+```html
+<div data-aos="fade-up">Fade Up</div>
+```
+
+## ScrollMagic
+
+[ScrollMagic](https://github.com/janpaepke/ScrollMagic)은 스크롤과 요소의 상호 작용을 위한 자바스크립트 라이브러리입니다.<br>
+대표적으로 어떤 요소가 현재 화면에 보이는 상태인지를 확인할 때 사용합니다.
+
+[ScrollMagic API](http://scrollmagic.io/docs/)
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+```
+
+```js
+new ScrollMagic.Scene({
+    // 감시할 장면(Scene)을 추가
+    triggerElement: spyEl, // 보여짐 여부를 감시할 요소를 지정
+    triggerHook: 0.8, // 화면의 80% 지점에서 보여짐 여부 감시
+})
+    .setClassToggle(spyEl, 'show') // 요소가 화면에 보이면 show 클래스 추가
+    .addTo(new ScrollMagic.Controller()); // 컨트롤러에 장면을 할당(필수!)
 ```
 
 ## Youtube API
@@ -330,25 +414,4 @@ function onYouTubePlayerAPIReady() {
         },
     });
 }
-```
-
-## ScrollMagic
-
-[ScrollMagic](https://github.com/janpaepke/ScrollMagic)은 스크롤과 요소의 상호 작용을 위한 자바스크립트 라이브러리입니다.<br>
-대표적으로 어떤 요소가 현재 화면에 보이는 상태인지를 확인할 때 사용합니다.
-
-[ScrollMagic API](http://scrollmagic.io/docs/)
-
-```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
-```
-
-```js
-new ScrollMagic.Scene({
-    // 감시할 장면(Scene)을 추가
-    triggerElement: spyEl, // 보여짐 여부를 감시할 요소를 지정
-    triggerHook: 0.8, // 화면의 80% 지점에서 보여짐 여부 감시
-})
-    .setClassToggle(spyEl, 'show') // 요소가 화면에 보이면 show 클래스 추가
-    .addTo(new ScrollMagic.Controller()); // 컨트롤러에 장면을 할당(필수!)
 ```
