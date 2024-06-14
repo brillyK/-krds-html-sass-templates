@@ -44,6 +44,8 @@ https://eehd80.github.io/-setting/
 
 ## BEM
 
+https://getbem.com/
+
 BEM이란? CSS 제작 방법론으로, 일종의 네이밍 컨벤션이라고 볼 수 있다. 개발, 디버깅, 유지보수를 위해 가능한 명확하게 네이밍하는 것이 그들의 목표이다.
 
 ## 문자 인코딩(Character Encoding) 설정
